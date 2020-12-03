@@ -14,9 +14,6 @@ import matplotlib.pyplot as plt
 import torch as t
 from torch.utils.data import DataLoader
 
-import stsc.datasets as D
-import stsc.models as M
-
 import anndata as ad
 import scipy.sparse as sparse
 
