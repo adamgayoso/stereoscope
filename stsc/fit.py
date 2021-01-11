@@ -77,7 +77,7 @@ def fit(model : Union[M.ScModel,M.STModel],
 
     dataloader = DataLoader(dataset,
                             batch_size = batch_size,
-                            shuffle = False,
+                            shuffle = True,
                             )
 
     # Use try/except to catch SIGINT
