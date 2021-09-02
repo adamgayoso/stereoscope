@@ -74,6 +74,8 @@ def fit(model : Union[M.ScModel,M.STModel],
         batch_size = dataset.M
     else:
         batch_size = int(np.min((batch_size,dataset.M)))
+        
+    print(f"Batch size: {batch_size}")
 
     dataloader = DataLoader(dataset,
                             batch_size = batch_size,
