@@ -209,9 +209,10 @@ def run(prs : arp.ArgumentParser,
                                  freeze_beta = args.freeze_beta,
                                  )
 
-        W,st_model = st_res['proportions'],st_res['model']
+        W_norm,W,st_model = st_res['proportions'],st_res['proportions_unconstr'], st_res['model']
 
         # split joint matrix into multiple
+        wlist_norm = utils.split_joint_matrix(W_norm)
         wlist = utils.split_joint_matrix(W)
 
         # save st model
@@ -226,7 +227,12 @@ def run(prs : arp.ArgumentParser,
             if not osp.exists(section_dir):
                 mkdir(section_dir)
 
-            oname_W = osp.join(section_dir,'.'.join(['W',timestamp,'tsv']))
+            oname_W_norm = osp.join(section_dir,'.'.join(['W',timestamp,'tsv']))
+            log.info("saving proportions for section {} to {}".format(sectiontag[s],
+                                                                      oname_W_norm))
+            utils.write_file(wlist_norm[s],oname_W_norm)
+
+            oname_W = osp.join(section_dir,'.'.join(['W_unconstr',timestamp,'tsv']))
             log.info("saving proportions for section {} to {}".format(sectiontag[s],
                                                                       oname_W))
             utils.write_file(wlist[s],oname_W)
