@@ -233,6 +233,6 @@ def run(prs : arp.ArgumentParser,
             utils.write_file(wlist_norm[s],oname_W_norm)
 
             oname_W = osp.join(section_dir,'.'.join(['W_unconstr',timestamp,'tsv']))
-            log.info("saving proportions for section {} to {}".format(sectiontag[s],
-                                                                      oname_W))
+            log.info("saving proportions (unconstr) for section {} to {}".format(sectiontag[s],
+                                                                                 oname_W))
             utils.write_file(wlist[s],oname_W)
